@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rest Countries API</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,300,regular,500,600,700,800,900,200italic,300italic,italic,500italic,600italic,700italic,800italic,900italic" rel="stylesheet" />
+    <script src="main.js" defer></script>
+</head>
+<body>
+    
+    <!-- header -->
+     <header>
+        <div class="header-section flex">
+            <a href="/index.html"><span class="header-text">Where in the world?</span></a>
+            <div class="light-dark-mode">
+                <span><i class="fa-regular fa-moon"></i>&nbsp; Dark mode</span>
+            </div>
+
+        </div>
+     </header>
+
+     <!-- countries card -->
+      <main>
+
+        <div class="search-section container flex">
+            <div class="input-box-container flex">
+                <div class="search-icon">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </div>
+
+                <div class="input-box">
+                    <input type="text" placeholder="Search for a country...">
+                </div>
+            </div>
+
+            <div class="filter-container">
+                <div class="filter-box flex">
+                    <span>
+                        Filter by Region
+                    </span>
+                    <i class="fa-solid fa-chevron-down"></i>
+                    
+                </div>
+
+                <div class="region-countries">
+                    <ul class="flex">
+                        <li>Africa</li>
+                        <li>America</li>
+                        <li>Asia</li>
+                        <li>Europe</li>
+                        <li>Oceania</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="countries-card container flex"></div>
+      </main>
+</body>
+</html>
