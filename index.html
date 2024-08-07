@@ -12,11 +12,12 @@
 <body>
     
     <!-- header -->
+    
      <header>
         <div class="header-section flex">
             <a href="/index.html"><span class="header-text">Where in the world?</span></a>
             <div class="light-dark-mode">
-                <span><i class="fa-regular fa-moon"></i>&nbsp; Dark mode</span>
+                <span><ion-icon name="moon-outline"></ion-icon>&nbsp;Dark mode</span>
             </div>
 
         </div>
@@ -27,11 +28,11 @@
 
         <div class="search-section container flex">
             <div class="input-box-container flex">
-                <div class="search-icon">
-                    <i class="fa-solid fa-magnifying-glass"></i>
+                <div class="search-icon flex">
+                    <ion-icon name="search-outline"></ion-icon>
                 </div>
 
-                <div class="input-box">
+                <div class="input-box flex">
                     <input type="text" placeholder="Search for a country...">
                 </div>
             </div>
@@ -41,7 +42,7 @@
                     <span>
                         Filter by Region
                     </span>
-                    <i class="fa-solid fa-chevron-down"></i>
+                    <ion-icon name="chevron-down-outline"></ion-icon>
                     
                 </div>
 
@@ -59,5 +60,7 @@
 
         <div class="countries-card container flex"></div>
       </main>
+      <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 </body>
 </html>

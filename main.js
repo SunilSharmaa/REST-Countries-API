@@ -1,4 +1,5 @@
 let allCountries = {};
+let isDarkMode = false;
 async function getData() {
     let response = await fetch("https://restcountries.com/v3.1/all#");
     let data = await response.json();
@@ -63,9 +64,22 @@ regionCountriesUl.addEventListener("click", (e) => {
     getRegionCountries(e.target.innerText);
 })
 
-let filterToggle = document.querySelector(".filter-box i");
+let filterToggle = document.querySelector(".filter-box ion-icon");
 let regionCountries = document.querySelector(".region-countries");
 filterToggle.addEventListener("click", () => {
     regionCountries.classList.toggle("hidden");
     filterToggle.classList.toggle("degree-180");
+})
+
+let lightDarkMode = document.querySelector(".light-dark-mode span");
+lightDarkMode.addEventListener("click", () => {
+    if(!isDarkMode) {
+        document.body.classList.add("dark-mode");
+        lightDarkMode.innerHTML = `<span><ion-icon name="sunny-outline"></ion-icon>&nbsp;Light mode</span>`;
+        isDarkMode = true;
+    } else {
+        document.body.classList.remove("dark-mode");
+        lightDarkMode.innerHTML = `<span><ion-icon name="moon-outline"></ion-icon>&nbsp;Dark mode</span>`;
+        isDarkMode = false;
+    }
 })
