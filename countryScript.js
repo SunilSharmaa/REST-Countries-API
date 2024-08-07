@@ -1,49 +1,55 @@
 window.onload = () => {
-    function getQueryString() {
-        let urlParam = new URLSearchParams(location.search);
-        let params = urlParam.get("name");
-        
-        document.title = params;
-        let url = `https://restcountries.com/v3.1/name/${params}?fullText=true`;
-        getData(url);
+    isDarkMode = false;
+  function getQueryString() {
+    let urlParam = new URLSearchParams(location.search);
+    let params = urlParam.get("name");
+
+    document.title = params;
+    let url = `https://restcountries.com/v3.1/name/${params}?fullText=true`;
+    getData(url);
+  }
+
+  async function getData(countryUrl) {
+    let response = await fetch(countryUrl);
+    let data = await response.json();
+    fillingPage(data[0]);
+  }
+
+  function fillingPage(data) {
+    let countryName = data.name.common;
+    let nativeName = "NA";
+    let population = data.population;
+    let region = data.region;
+    let subRegion = data.subregion;
+    let capital = "NA";
+    let topLevelDomain = data.tld;
+    let currencies = "NA";
+    let languages = "NA";
+    let flag = data.flags.svg;
+    let borderCountries = data.borders;
+
+    if (data.name.nativeName) {
+      nativeName = Object.values(data.name.nativeName)[0].common;
     }
-    
-    async function getData(countryUrl) {
-        let response = await fetch(countryUrl);
-        let data = await response.json();
-        fillingPage(data[0]);
+
+    if (data.capital) {
+      let temp = Object.values(data.capital);
+      capital = temp.join(", ");
     }
 
-    function fillingPage(data) {
-        let countryName = data.name.common;
-        let nativeName = "NA";
-        let population = data.population;
-        let region = data.region;
-        let subRegion = data.subregion;
-        let capital = data.capital;
-        let topLevelDomain = data.tld
-        let currencies = "NA";
-        let languages = "NA";
-        let flag = data.flags.svg;
-        let borderCountries = data.borders;
+    if (data.currencies) {
+      currencies = Object.values(data.currencies)[0].name;
+    }
 
-        if(data.name.nativeName) {
-            nativeName = Object.values(data.name.nativeName)[0].common;
-        }
+    if (data.languages) {
+      let temp = Object.values(data.languages);
+      languages = temp.join(", ");
+    }
 
-        if(data.currencies) {
-            currencies = Object.values(data.currencies)[0].name
-        }
-
-        if(data.languages) {
-            let temp = Object.values(data.languages)
-            languages = temp.join(", ");
-        }
-
-        let countrySection = document.createElement("div");
-        countrySection.classList.add("country-section");
-        countrySection.classList.add("flex");
-        countrySection.innerHTML = `
+    let countrySection = document.createElement("div");
+    countrySection.classList.add("country-section");
+    countrySection.classList.add("flex");
+    countrySection.innerHTML = `
         <div class="flag-section">
                 <img src="${flag}" alt="${countryName} flag">
               </div>
@@ -72,46 +78,54 @@ window.onload = () => {
                         
                     </div>
                   </div>
-              </div>`
+              </div>`;
 
-         let main = document.querySelector("main");
-         main.appendChild(countrySection);
+    let main = document.querySelector("main");
+    main.appendChild(countrySection);
 
-         createBorderCountries(borderCountries);
+    createBorderCountries(borderCountries);
+  }
+
+  let backButton = document.querySelector(".back-button");
+
+  backButton.addEventListener("click", () => {
+    window.history.back();
+  });
+
+  function createBorderCountries(border) {
+    let borderCountriesDiv = document.querySelector(".border-countries");
+
+    if (border === undefined) {
+      let notAvailable = document.createElement("span");
+      notAvailable.classList.add("value");
+      notAvailable.innerText = "NA";
+      borderCountriesDiv.appendChild(notAvailable);
+    } else {
+      border.forEach((countries) => {
+        fetch(`https://restcountries.com/v3.1/alpha/${countries}`)
+          .then((res) => res.json())
+          .then((data) => {
+            let borderCountryButton = document.createElement("a");
+            borderCountryButton.href = `/country.html?name=${data[0].name.common}`;
+            borderCountryButton.innerHTML = `<button class="border-country-btn">${data[0].name.common}</button>`;
+            borderCountriesDiv.appendChild(borderCountryButton);
+          });
+      });
     }
+  }
 
-    
-
-    let backButton = document.querySelector(".back-button");
-
-    backButton.addEventListener("click", ()=> {
-        window.history.back();
-    })
-
-    function createBorderCountries(border) {
-        let borderCountriesDiv = document.querySelector(".border-countries");
-        
-        if(border === undefined) {
-            let notAvailable = document.createElement("span");
-            notAvailable.classList.add("value");
-            notAvailable.innerText = "NA";
-            borderCountriesDiv.appendChild(notAvailable);
-        } else {
-            border.forEach((countries) => {
-                fetch(`https://restcountries.com/v3.1/alpha/${countries}`)
-                .then((res) => res.json())
-                .then((data) => {
-                    let borderCountryButton = document.createElement("a");
-                    borderCountryButton.href = `/country.html?name=${data[0].name.common}`;
-                    borderCountryButton.innerHTML = `<button class="border-country-btn">${data[0].name.common}</button>`;
-                    borderCountriesDiv.appendChild(borderCountryButton);
-                })
-            })
-        }
-
+  let lightDarkMode = document.querySelector(".light-dark-mode span");
+  lightDarkMode.addEventListener("click", () => {
+    if (!isDarkMode) {
+      document.body.classList.add("dark-mode");
+      lightDarkMode.innerHTML = `<span><ion-icon name="sunny-outline"></ion-icon>&nbsp;Light mode</span>`;
+      isDarkMode = true;
+    } else {
+      document.body.classList.remove("dark-mode");
+      lightDarkMode.innerHTML = `<span><ion-icon name="moon-outline"></ion-icon>&nbsp;Dark mode</span>`;
+      isDarkMode = false;
     }
+  });
 
-
-    
-    getQueryString();
-}
+  getQueryString();
+};

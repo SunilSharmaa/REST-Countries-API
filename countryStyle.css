@@ -2,13 +2,32 @@
     font-family: Nunito,sans-serif;
 }
 
+a {
+    color: inherit;
+}
+
+:root {
+    --hover-black : black;
+    --hover-white : white;
+}
+
+.dark-mode {
+    --element-white : #2b3945;
+    --light-gray-l-mode : #202c37;
+    --dark-gray-l-mode : #ffffff;
+    --hover-black : white;
+    --hover-white : black;
+    color: white;
+}
+
 .back-button {
     margin-top: 2rem;
     padding: 0.5rem 1.5rem;
     border-radius: 6px;
-    background-color: inherit;
+    background-color: var(--element-white);
     border: none;
-    box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.362)
+    box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.362);
+    color: inherit;
 }
 
 .flag-section {
@@ -19,6 +38,9 @@
 .flag-section img {
     /* width: 500px; */
     width: 100%;
+    max-height: 360px;
+    /* height: 70%; */
+    /* max-height: 70%; */
     /* height: 350px; */
     /* border: 0.2px grey; */
     /* box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.204); */
@@ -66,13 +88,14 @@
 .border-country-btn {
     padding: 0.1rem 1.3rem;
     border-radius: 6px;
-    background-color: inherit;
+    background-color: var(--element-white);
     border: none;
     box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.362);
+    color: inherit;
 }
 
 .back-button:hover,
 .border-country-btn:hover {
-    background-color: black;
-    color: white;
+    background-color: var(--hover-black);
+    color: var(--hover-white);
 }
