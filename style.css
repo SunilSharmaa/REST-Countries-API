@@ -90,6 +90,7 @@ header {
     justify-content: flex-start;
     max-width: 1400px;
     gap: 4.5%;
+    padding-bottom: 4rem;
 }
 
 .countries-card a {
@@ -98,7 +99,7 @@ header {
 }
 
 .card {
-    margin-top: 4rem;
+    margin-top: 3rem;
     max-width: 250px;
     min-width: 250px;
     background-color: var(--element-white);
@@ -116,7 +117,7 @@ header {
 
 .countries-card a img {
     max-height: 167px;
-    object-fit: cover;
+    object-fit: fill;
 }
 
 .card:hover {

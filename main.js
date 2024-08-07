@@ -12,9 +12,22 @@ function createCountryCard(data) {
     let countriesCard = document.querySelector(".countries-card");
     countriesCard.innerHTML = "";
     data.forEach((value)=> {
+        let countryName = value.name.common;
+        let population = value.population;
+        let region = "NA";
+        let capital = "NA";
+
+        if(value.region) {
+            region = value.region;
+        }
+
+        if(value.capital) {
+            let temp = Object.values(value.capital);
+            capital = temp.join(", ");
+        }
         // console.log(value.name.common);
         let card = document.createElement("a");
-        card.href = `/country.html?name=${value.name.common}`
+        card.href = `country.html?name=${countryName}`
         card.classList.add("flex")
         card.classList.add("card");
         
@@ -22,15 +35,15 @@ function createCountryCard(data) {
                 <img src="${value.flags.svg}" alt="South georgia">
 
                 <div class="card-content">
-                    <span class="countries-name">${value.name.common}</span>
+                    <span class="countries-name">${countryName}</span>
                     <div class="population">
-                        <p><b>Population:&nbsp;&nbsp;</b><span class="value">${value.population}</span></p>
+                        <p><b>Population:&nbsp;&nbsp;</b><span class="value">${population}</span></p>
                     </div>
                     <div class="region">
-                        <p><b>Region:&nbsp;&nbsp;</b><span class="value">${value.region}</span></p>
+                        <p><b>Region:&nbsp;&nbsp;</b><span class="value">${region}</span></p>
                     </div>
                     <div class="capital">
-                        <p><b>Capital:&nbsp;&nbsp;</b><span class="value">${value.capital}</span></p>
+                        <p><b>Capital:&nbsp;&nbsp;</b><span class="value">${capital}</span></p>
                     </div>
                 </div>`;
         card.innerHTML = cardContent;
