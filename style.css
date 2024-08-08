@@ -20,6 +20,7 @@
     --element-white : #ffffff;
     --light-gray-l-mode : #fafafa;
     --dark-gray-l-mode : #6e6e6e;
+    --dark--gray : #6e6e6e;
     --dark-blue : #2b3945;
     --dark-blue-l-mode : #111517;
     --dark-blue-d-mode : #202c37;
@@ -28,7 +29,8 @@
 .dark-mode {
     --element-white : #2b3945;
     --light-gray-l-mode : #202c37;
-    --dark-gray-l-mode : #ffffff;
+    --dark-gray-l-mode : #dcdcdc;
+    --dark--gray : #e1e1e1;
     color: white;
 }
 
@@ -147,7 +149,7 @@ header {
 }
 
 .value {
-    color: var(--dark-gray-l-mode);
+    color: var(--dark--gray);
 }
 
 /* search section */
@@ -222,6 +224,7 @@ header {
     cursor: pointer;
     border-radius: 5px;
     z-index: 1000;
+    box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.362);
     visibility: hidden;
 }
 

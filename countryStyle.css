@@ -17,6 +17,7 @@ a {
     --dark-gray-l-mode : #ffffff;
     --hover-black : white;
     --hover-white : black;
+    --dark--gray : #e1e1e1;
     color: white;
 }
 
@@ -28,6 +29,7 @@ a {
     border: none;
     box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.362);
     color: inherit;
+    align-items: center;
 }
 
 .flag-section {
