@@ -1,5 +1,20 @@
+import {isDarkMode, lightDarkMode, checkDarkMode} from "./modules.js";
+window.onload = () => {
 let allCountries = {};
-let isDarkMode = false;
+// export let isDarkMode = JSON.parse(localStorage.getItem("isDarkMode")) || {"isDarkMode" : false};
+// export let lightDarkMode = document.querySelector(".light-dark-mode span");
+
+// export function checkDarkMode() {
+//     if(isDarkMode.isDarkMode) {
+//         document.body.classList.add("dark-mode");
+//         lightDarkMode.innerHTML = `<span><ion-icon name="sunny-outline"></ion-icon>&nbsp;Light mode</span>`;
+//     } else {
+//         document.body.classList.remove("dark-mode");
+//         lightDarkMode.innerHTML = `<span><ion-icon name="moon-outline"></ion-icon>&nbsp;Dark mode</span>`;
+//     }
+// }
+checkDarkMode();
+
 async function getData() {
     let response = await fetch("https://restcountries.com/v3.1/all#");
     let data = await response.json();
@@ -84,15 +99,9 @@ filterToggle.addEventListener("click", () => {
     filterToggle.classList.toggle("degree-180");
 })
 
-let lightDarkMode = document.querySelector(".light-dark-mode span");
 lightDarkMode.addEventListener("click", () => {
-    if(!isDarkMode) {
-        document.body.classList.add("dark-mode");
-        lightDarkMode.innerHTML = `<span><ion-icon name="sunny-outline"></ion-icon>&nbsp;Light mode</span>`;
-        isDarkMode = true;
-    } else {
-        document.body.classList.remove("dark-mode");
-        lightDarkMode.innerHTML = `<span><ion-icon name="moon-outline"></ion-icon>&nbsp;Dark mode</span>`;
-        isDarkMode = false;
-    }
+    isDarkMode.isDarkMode = !isDarkMode.isDarkMode;
+    checkDarkMode();
+    localStorage.setItem("isDarkMode", JSON.stringify(isDarkMode));
 })
+}

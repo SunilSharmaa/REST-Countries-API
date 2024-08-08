@@ -1,5 +1,7 @@
+// import { isDarkMode, lightDarkMode, checkDarkMode } from "./main.js";
+import {isDarkMode, lightDarkMode, checkDarkMode} from "./modules.js";
 window.onload = () => {
-    isDarkMode = false;
+    checkDarkMode();
   function getQueryString() {
     let urlParam = new URLSearchParams(location.search);
     let params = urlParam.get("name");
@@ -114,18 +116,11 @@ window.onload = () => {
     }
   }
 
-  let lightDarkMode = document.querySelector(".light-dark-mode span");
   lightDarkMode.addEventListener("click", () => {
-    if (!isDarkMode) {
-      document.body.classList.add("dark-mode");
-      lightDarkMode.innerHTML = `<span><ion-icon name="sunny-outline"></ion-icon>&nbsp;Light mode</span>`;
-      isDarkMode = true;
-    } else {
-      document.body.classList.remove("dark-mode");
-      lightDarkMode.innerHTML = `<span><ion-icon name="moon-outline"></ion-icon>&nbsp;Dark mode</span>`;
-      isDarkMode = false;
-    }
-  });
+    isDarkMode.isDarkMode = !isDarkMode.isDarkMode;
+    checkDarkMode();
+    localStorage.setItem("isDarkMode", JSON.stringify(isDarkMode));
+})
 
   getQueryString();
 };
