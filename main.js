@@ -18,6 +18,11 @@ checkDarkMode();
 async function getData() {
     let response = await fetch("https://restcountries.com/v3.1/all#");
     let data = await response.json();
+
+    data.sort((a, b) => {
+        return a.name.common.localeCompare(b.name.common);
+    });
+    
     allCountries = data;
     console.log(data);
     createCountryCard(data);

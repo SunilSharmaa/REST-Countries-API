@@ -117,11 +117,12 @@ header {
     max-height: 315px;
     min-height: 325px;
     /* display: flex; */
+    
 }
 
 .countries-card a img {
     max-height: 167px;
-    object-fit: fill;
+    /* object-fit: contain; */
 }
 
 .card:hover {
