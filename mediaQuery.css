@@ -1,0 +1,101 @@
+@media (max-width: 1200px) {
+    .countries-card {
+        column-gap: 3rem;
+        justify-content: center;
+    }
+
+    .country-section {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .country-content {
+        padding-block: 1.5rem;
+    }
+
+}
+
+@media (max-width: 1057px) {
+    .countries-card {
+        column-gap: 5rem;
+    }
+
+    .input-box input {
+        padding-right: 2rem;
+    }
+}
+
+@media (max-width: 725px) {
+    .countries-card {
+        column-gap: 2rem;
+    }
+
+    .header-section a span,
+    .header-section div span {
+        font-size: 0.9rem;
+    }
+
+    .header-section {
+        width: 90%;
+    }
+}
+
+@media (max-width: 595px) {
+    .search-section {
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+
+    .filter-container {
+        width: 140px;
+    }
+
+    .filter-box span,
+    .filter-box ion-icon {
+        font-size: 0.7rem;
+    }
+
+    .filter-box {
+        padding-right: 0.5rem;
+    }
+
+    .card {
+        min-width: 300px;
+    }
+}
+
+@media (max-width: 440px) {
+    .card {
+        min-width: 250px;
+    }
+
+    .container {
+        width: 90%;
+    }
+
+    .header-section a span,
+    .header-section div span {
+        font-size: 0.8rem;
+    }
+
+    .country-section {
+        gap: 0;
+    }
+
+    .country-details {
+        flex-direction: column;
+        gap: 10px;
+        margin-top: 1rem;
+    }
+    
+    .country-content {
+        padding-block: 1.5rem;
+        padding-left: 1rem;
+    }
+
+    .section-left,
+    .section-right {
+        width: 80%;
+    }
+}
+

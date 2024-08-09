@@ -53,6 +53,7 @@ a {
     /* border: 2px solid black; */
     margin-top: 4rem;
     gap: 100px;
+    align-items: center;
 }
 
 .country-content {
