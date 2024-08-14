@@ -15,6 +15,18 @@ let allCountries = {};
 // }
 checkDarkMode();
 
+let countriesCard = document.querySelector(".countries-card");
+let cardTemplate = document.querySelector("#card-template");
+
+function shimmerEffect() {
+    for(let i = 0; i < 12; i++) {
+        let div = cardTemplate.content.cloneNode(true);
+        countriesCard.appendChild(div);
+    }
+}
+
+shimmerEffect();
+
 async function getData() {
     let response = await fetch("https://restcountries.com/v3.1/all#");
     let data = await response.json();
@@ -29,7 +41,7 @@ async function getData() {
 }
 
 function createCountryCard(data) {
-    let countriesCard = document.querySelector(".countries-card");
+    
     countriesCard.innerHTML = "";
     data.forEach((value)=> {
         let countryName = value.name.common;
@@ -52,7 +64,7 @@ function createCountryCard(data) {
         card.classList.add("card");
         
         let cardContent = `
-                <img src="${value.flags.svg}" alt="South georgia">
+                <img class="card-image" src="${value.flags.svg}" alt="South georgia">
 
                 <div class="card-content">
                     <span class="countries-name">${countryName}</span>
