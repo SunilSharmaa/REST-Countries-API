@@ -13,6 +13,21 @@
         padding-block: 1.5rem;
     }
 
+    .loader-container {
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .skeleton-image {
+        width: 70%;
+        height: 40%;
+    }
+
+    .s-loader {
+        width: 90%;
+        height: 100%;
+    }
+
 }
 
 @media (max-width: 1057px) {
