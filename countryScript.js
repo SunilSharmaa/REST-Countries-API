@@ -2,9 +2,30 @@
 import {isDarkMode, lightDarkMode, checkDarkMode} from "./modules.js";
 window.onload = () => {
     checkDarkMode();
+
+    let backButton = document.querySelector(".back-button");
+
+    backButton.addEventListener("click", () => {
+      console.log("back");
+      window.history.back();
+    });
+
+
+    let mainSection = document.querySelector("main");
+    let cardTemplate2 = document.querySelector("#card-template-2");
+    
+    function shimmerEffect() {
+      let div = cardTemplate2.content.cloneNode(true);
+      console.log(div);
+      mainSection.appendChild(div);
+    }
+
+    shimmerEffect();
+
   function getQueryString() {
     let urlParam = new URLSearchParams(location.search);
     let params = urlParam.get("name");
+
 
     document.title = params;
     let url = `https://restcountries.com/v3.1/name/${params}?fullText=true`;
@@ -53,7 +74,7 @@ window.onload = () => {
     countrySection.classList.add("flex");
     countrySection.innerHTML = `
         <div class="flag-section">
-                <img src="${flag}" alt="${countryName} flag">
+                <img class="flag-image" src="${flag}" alt="${countryName} flag">
               </div>
 
               <div class="country-content">
@@ -83,16 +104,13 @@ window.onload = () => {
               </div>`;
 
     let main = document.querySelector("main");
+    main.innerHTML = "";
     main.appendChild(countrySection);
 
     createBorderCountries(borderCountries);
   }
 
-  let backButton = document.querySelector(".back-button");
 
-  backButton.addEventListener("click", () => {
-    window.history.back();
-  });
 
   function createBorderCountries(border) {
     let borderCountriesDiv = document.querySelector(".border-countries");
